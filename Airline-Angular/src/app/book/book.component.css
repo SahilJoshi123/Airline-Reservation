@@ -1,0 +1,133 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 16px;
+  }
+  
+  .plane {
+    margin-left:35%;
+    max-width: 400px;
+    width: 30%;
+    border: 2px solid black;
+    border-radius: 10px;
+    float: left;
+  }
+  .confirm{
+    float: right;
+    margin-right: 15%;
+    margin-top: 5%;
+  }
+
+  .details{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150%;
+    padding: 10%;
+  }
+
+  input[type="button"]{
+    margin-left: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .exit {
+    position: relative;
+    height: 50px;
+  }
+  .exit:before, .exit:after {
+    content: "EXIT";
+    font-size: 18px;
+    line-height: 18px;
+    padding: 0px 2px;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    display: block;
+    position: absolute;
+    background: green;
+    color: white;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .exit:before {
+    left: 0;
+  }
+  .exit:after {
+    right: 0;
+  }
+  
+  
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .seats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  
+  .seat {
+    display: flex;
+    flex: 0 0 14%;
+    padding: 5px;
+    position: relative;
+  }
+  .seat:nth-child(3) {
+    margin-right: 15%;
+  }
+  .seat input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+  }
+  .seat input[type=checkbox]:checked + label {
+    background: lightgreen;
+  }
+  .seat input[type=checkbox]:disabled + label {
+    background: red;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+  .seat input[type=checkbox]:disabled + label:after {
+    content: "X";
+    text-indent: 0;
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    
+  }
+
+  .seat input[type=checkbox]:disabled + label:hover {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .seat label {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5rem;
+    padding: 4px 0;
+    background: white;
+    border-radius: 5px;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+  }
+
+  .seat label:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0px 2px #5C6AFF;
+  }
+  

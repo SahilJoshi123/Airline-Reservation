@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aeroplane Details</title>
+</head>
+<body>
+  <form>
+  <table>
+      
+      <tr *ngFor="let data of flightData">
+
+          <div class="container" style="display: flex;width:300%;height: 100px;
+          flex-direction: row;justify-content:space-between;
+          border:2px solid black;margin-left: 18%;border-radius: 5%;margin-bottom:-3%;margin-top: 10%;">
+
+          <div style="display:flex;flex-direction: column ;justify-content:space-evenly;">
+            <td>{{data.flight_name}}</td>
+          <td>{{data.flight_id}}</td>
+         </div>
+
+          <div style="display:flex;flex-direction: column ;justify-content:space-evenly;">
+          <td>{{data.source}}</td>
+          <td>{{data.source_time}}</td>
+         </div>
+
+
+        <div style="display:flex;flex-direction: column ;justify-content:space-evenly;">  
+        <td>{{data.destination}}</td>
+          <td>{{data.destination_time}}</td>
+          </div>
+
+        <div style="display:flex;flex-direction: column ;justify-content:space-evenly;">
+          <td>{{data.price}}</td>
+         </div>
+
+        <div style="display:flex;flex-direction: column ;justify-content:space-evenly;">
+        <td><input type="button" value="BOOK NOW"></td>
+        </div>
+        </div>
+      </tr>
+  </table> 
+</form> 
+</body>
+</html>
