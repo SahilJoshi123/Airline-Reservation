@@ -5,21 +5,20 @@
         <table>   
             <tr>
                  <td>  <label for="First Name"><b>First Name:</b></label></td>
-                 <td><input type="text" placeholder=" Enter First Name" name="firstName" formControlName="firstName" required style="border:1px solid black;" size="27">
+                 <td><input type="text" placeholder=" Enter First Name" name="firstName" formControlName="firstName" required style="border:1px solid black;" size="25">
                 </td>
            </tr>
             <tr> 
                 <td> 
                     <label for="Last Name"><b>Last Name:</b></label></td>
-                <td><input type="text" placeholder="Enter Last Name" name="lastName" formControlName="lastName" required style="border:1px solid black;" size="27">
+                <td><input type="text" placeholder="Enter Last Name" name="lastName" formControlName="lastName" required style="border:1px solid black;" size="25">
                 </td>
             </tr>
 
             <tr> 
                 <td> 
                     <label for="Gender"><b>Gender:</b></label></td>
-                <td><select  formControlName="gender" name = "gender" style="width: 100%;">
-                    <option>--Select--</option>
+                <td><select formControlName="gender" name = "gender" style="width: 100%;">
                     <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
@@ -31,7 +30,7 @@
                 <td> 
                   <label for="Age"><b>Age:</b></label></td>
                 <td>
-                    <input type="text" placeholder="Age" name="age" formControlName="age" required style="border:1px solid black;" size="27"></td>
+                    <input type="text" placeholder="Age" name="age" formControlName="age" pattern = "[1-9]{1,3}" required style="border:1px solid black;" size="25"></td>
            </tr>
     
    
@@ -39,40 +38,36 @@
               <td>
                 <label for="PhoneNumber"><b>Phone Number:</b></label></td>
               <td>
-                  <input type="text" placeholder="Phone Number" name="mobileNumber" formControlName="mobileNumber" pattern="[1-9][0-9]{9,9}" required style="border:1px solid black;" size="27"></td>
+                  <input type="text" placeholder="Phone Number" name="mobileNumber" formControlName="mobileNumber" pattern="[1-9][0-9]{9,9}" required style="border:1px solid black;" size="25"></td>
            </tr> 
     
           <tr>
               <td>
                 <label for="Email ID"><b>Email ID:</b></label></td>
              <td> 
-                 <input type="text" placeholder="Enter Email" name="emailId" formControlName="emailId" pattern="[a-zA-Z0-9]+@[a-z]+\.com" required style="border:1px solid black;" size="27"> </td>
+                 <input type="text" placeholder="Enter Email" name="emailId" formControlName="emailId" pattern="[a-zA-Z0-9]+@[a-z]+\.com" required style="border:1px solid black;" size="25"> </td>
          </tr>
 
         <tr>
             <td>
                 <label for="Password"><b>Password:</b></label></td>
             <td>
-                <input type="password" placeholder="Enter Password" name="password" formControlName="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@$%&(-/:-?_{}~])(?=.*[A-Z]).{8,12}" style="border:1px solid black;" size="27"></td>
+                <input type="password" placeholder="Enter Password" [(ngModel)]="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@$%&(-/:-?_{}~])(?=.*[A-Z]).{8,12}" formControlName="password" required  style="border:1px solid black;" size="25"></td>
         </tr>
-
+        
         <tr>
             <td>
-                 <label for="ConfirmPassword"><b>Confirm Password:</b></label></td>
-            <td> 
-                <input type="password" placeholder="Enter Password" name="confirmPassword" required style="border:1px solid black;" size="27"></td>
+                <label for="ConfirmPassword"><b>Confirm Password:</b></label></td>
+            <td>
+                <input type="password" placeholder="Enter Password" [(ngModel)]="confirmPassword"  formControlName="password" required  style="border:1px solid black;" size="25"></td>
         </tr>
+
+
         <tr>
             <td><input type="submit" value="Register" class = "button1" style=" background-color:lightgreen; "></td>
             <td><input type="button" value="Cancel" (click)="loadLoginPage()" class = "button2" style="background-color:lightcoral;"></td>
         </tr>
-
-    
-    
-</table>
+    </table>
 </div>
-
 </form>
-<h1>{{password}}</h1>
-
 

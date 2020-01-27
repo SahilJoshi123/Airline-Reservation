@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder} from '@angular/forms';
 import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,10 @@ export class RegisterComponent implements OnInit {
 
   addForm: FormGroup;
 
+  result: any;
+
+  
+
   constructor(private formBuilder: FormBuilder, private router: Router, 
     private userService: UserService) { }
 
@@ -24,26 +29,45 @@ export class RegisterComponent implements OnInit {
       lastName:[''],
       email: [''],
       gender: [''],
-    emailId: [''],
-    mobileNumber:[''],
-    age: [''],
-    password: ['']
+      emailId: [''],
+      mobileNumber:[''],
+      age: [''],
+      password: ['']
     });
+   }
 
-  }
-
-  onSubmit() {
-
+    onSubmit() {
+    let credential = {"emailId": this.addForm.controls.emailId.value, "password":this.addForm.controls.password.value};
     if(this.addForm.invalid){
       return;
     }
-    if(true){
-    this.userService.registerUser(this.addForm.value)
+      this.userService.loginUser(credential).subscribe(data =>{
+      this.result = data;
+    })
+
+      if(this.password==this.confirmPassword){
+        if(this.result==null)
+        {
+          alert('User Already exists. Please Login.');
+        }
+      else{
+        alert("Login Successful. ")
+        this.userService.loggedIn = true;
+        this.userService.registerUser(this.addForm.value)
       .subscribe( data => {
         
       });
       this.router.navigate(['search']);
+      }
     }
+    else{
+      alert("Password mismatch!");
+      this.confirmPassword='';
+      }
+  }
+
+  loadLoginPage(){
+    this.router.navigate(['login']);
   }
 }
 

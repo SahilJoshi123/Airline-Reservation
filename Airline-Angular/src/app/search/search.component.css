@@ -30,5 +30,41 @@
   border-radius: 30px;
   border: 2px solid black;
   width: 20%;
-  background-color:rgb(0, 174, 255);
+  background-color:lightskyblue;
 }
+
+
+.container{
+  justify-content: center;
+  display: flex;
+  width:300%;
+  height: 100px;
+  flex-direction: row;
+  justify-content:space-around;
+  border:2px solid black;
+  margin-left: 18%;
+  border-radius: 5%;
+  margin-bottom:-3%;margin-top: 10%;
+}
+
+.container div{
+  display:flex;
+  flex-direction: column ;
+  justify-content:space-around;
+  
+}
+
+
+.booknow_button{
+  background-color: lightskyblue;
+  width:100%;
+}
+
+.flights-container
+{
+  margin-left: 8.5%;
+  margin-bottom:10%;
+  margin-top: -2%;
+
+}
+

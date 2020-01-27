@@ -16,6 +16,8 @@ import { SelectComponent } from './select/select.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
+import { TicketinformationComponent } from './ticketinformation/ticketinformation.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     LoginComponent,
     AddFlightsComponent,
-    SelectComponent
+    SelectComponent,
+    DeleteFlightComponent,
+    TicketinformationComponent
   ],
   imports: [
     BrowserModule,

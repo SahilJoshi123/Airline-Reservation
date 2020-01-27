@@ -1,6 +1,7 @@
 header{
     background-color: #202eb3;
     color: white;
+    
 }
 
 b{
@@ -12,7 +13,8 @@ b{
 }
 
 footer{
-    position: absolute;
+    float: bottom;
+    
     bottom: 0;
     width: 100%;
     height: 3%;
@@ -24,4 +26,8 @@ img{
     height: 7%;
     width: 7%;
     margin-left: 1%;
+}
+
+.headerNavigate{
+    margin-left: 80%;
 }

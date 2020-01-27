@@ -1,30 +1,30 @@
 
-<form (ngSubmit)="loadBookingPage()" method="GET" class="h1">
+<form [formGroup]="addForm" (ngSubmit)="loadFlightDetails()" method="GET" class="h1">
 <div class="header" style="border: 2px solid;">
   
-  <input type="radio" name="TravelType" value="ONEWAY" >ONEWAY
-  <input type="radio" name="TravelType" value="ROUND-TRIP">ROUND TRIP<br><br>
+  <input formControlName="travelType" type="radio" name="travelType" value="ONEWAY" >ONEWAY
+  <input formControlName="travelType" type="radio" name="travelType" value="ROUND-TRIP">ROUND TRIP<br><br>
 
   
     Source:
-  <select required style=" height: 30px; ">
+  <select formControlName="source" required style=" height: 30px; ">
     <option *ngFor="let loc of Location">{{loc}}</option>
   </select>
   
 
   Destination:
-  <select required style=" height: 30px; margin-left: 10px;">
+  <select formControlName="destination" required style=" height: 30px; margin-left: 10px;">
     <option *ngFor="let loc of Location">{{loc}}</option>
   </select> 
   &nbsp;&nbsp;
 
   
     Departure date:
-  <input type="date" value="Departure Date" style=" height: 30px; border:1px solid black; border-radius: 10px;" required/>
+  <input formControlName="departureDate" type="date"  value="Departure Date" style=" height: 30px; border:1px solid black; border-radius: 10px;" required/>
   
   &nbsp;&nbsp;
     Return date:
-  <input type="date" value="Return Date" style=" height: 30px; border:1px solid black; border-radius: 10px;">
+  <input formControlName="returnDate" type="date" value="Return Date" style=" height: 30px; border:1px solid black; border-radius: 10px;">
 
   &nbsp;&nbsp;
   <br>
@@ -32,23 +32,49 @@
   <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
   Travellers:
-  <select  style="margin-right: 500px; height: 30px;"> 
+  <select formControlName="count" style="margin-right: 500px; height: 30px;"> 
     <option *ngFor="let num of Travellers">{{num}}</option>
   </select>
 
   Class:
-  <select style="margin-left: 10px; height: 30px;"  required>
+  <select formControlName="class" style="margin-left: 10px; height: 30px;"  required>
   <option *ngFor="let trav of Class">{{trav}}</option>   
   </select>
   <br>
 <br>
 <br>
 
-
 <div style="text-align: center;" class="search"> 
   <input type="submit" value="Search" class="button">
-</div>
-
-</div>
-
+  </div>
+ </div>
 </form>
+
+<div *ngIf="data" class="flights-container" style="margin-top:4%;">
+<h2 style="margin-left: 42%;">Flight Details</h2>
+<div class="flights-container">
+<table>
+ <tr *ngFor="let data of flightData">
+    <div class="container">
+      <div>
+        <td><b>{{data.airlineName}}</b></td>
+        <td>{{data.flightId}}</td>
+     </div>
+     <div>
+        <td><b>{{data.source}}</b></td>
+        <td>{{data.departureTime}}</td>
+     </div>
+     <div>  
+        <td><b>{{data.destination}}</b></td>
+        <td>{{data.arrivalTime}}</td>
+     </div>
+     <div>
+        <td><b>{{data.basePrice}}</b></td>
+     </div>
+    <div>
+       <td><input type="button" value="Book Now" class="booknow_button" (click)="loadBookingPage(data)"></td>
+    </div>
+    </div>
+  </tr>
+</table> 
+</div>

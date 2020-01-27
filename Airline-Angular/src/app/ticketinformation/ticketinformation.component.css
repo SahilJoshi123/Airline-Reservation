@@ -1,0 +1,21 @@
+.container{
+
+   margin-left: 35%;
+   border: 1px solid black;
+   width: 27%;
+   padding-left: 4%;
+   padding-bottom:1%;
+   border-radius: 10%;
+  
+   margin-top: 2.5%;
+   box-shadow: 20px 20px 20px #aaaaaa;
+  
+}
+table{ 
+    border-collapse:separate; 
+    border-spacing: 0 13px; 
+    }
+h1
+{
+    color:black;
+}

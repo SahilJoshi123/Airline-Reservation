@@ -1,4 +1,5 @@
 <h1 align = "center">Cockpit Here</h1>
+<form [formGroup] ="seatForm">
 <div class="plane">
 
     <div class="exit"></div>
@@ -7,27 +8,27 @@
 
         <ol class="seats">
           <li class="seat">
-            <input type="checkbox" id="1A" (change)="checkedState($event, checkBox)" />
+            <input type="checkbox" formControlName="A1" id="1A" (change)="checkedState($event, checkBox)" />
             <label for="1A">1A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="1B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B1" id="1B" (change)="checkedState($event, checkBox)"/>
             <label for="1B">1B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="1C" (change)="checkedState($event, checkBox)" />
+            <input type="checkbox" formControlName="C1" id="1C" (change)="checkedState($event, checkBox)" />
             <label for="1C">1C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="1D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D1" id="1D" (change)="checkedState($event, checkBox)"/>
             <label for="1D">1D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="1E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E1" id="1E" (change)="checkedState($event, checkBox)"/>
             <label for="1E">1E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="1F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F1" id="1F" (change)="checkedState($event, checkBox)"/>
             <label for="1F">1F</label>
           </li>
         </ol>
@@ -35,27 +36,27 @@
       <li class="row row--2">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="2A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A2" id="2A" (change)="checkedState($event, checkBox)"/>
             <label for="2A">2A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="2B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B2" id="2B" (change)="checkedState($event, checkBox)"/>
             <label for="2B">2B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="2C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C2" id="2C" (change)="checkedState($event, checkBox)"/>
             <label for="2C">2C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="2D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D2" id="2D" (change)="checkedState($event, checkBox)"/>
             <label for="2D">2D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="2E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E2" id="2E" (change)="checkedState($event, checkBox)"/>
             <label for="2E">2E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="2F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F2" id="2F" (change)="checkedState($event, checkBox)"/>
             <label for="2F">2F</label>
           </li>
         </ol>
@@ -63,27 +64,27 @@
       <li class="row row--3">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="3A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A3" id="3A" (change)="checkedState($event, checkBox)"/>
             <label for="3A">3A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B3" id="3B" (change)="checkedState($event, checkBox)"/>
             <label for="3B">3B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C3"  id="3C" (change)="checkedState($event, checkBox)"/>
             <label for="3C">3C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D3" id="3D" (change)="checkedState($event, checkBox)"/>
             <label for="3D">3D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E3" id="3E" (change)="checkedState($event, checkBox)"/>
             <label for="3E">3E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F3" id="3F" (change)="checkedState($event, checkBox)"/>
             <label for="3F">3F</label>
           </li>
         </ol>
@@ -92,27 +93,27 @@
       <li class="row row--4">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="4A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A4" id="4A" (change)="checkedState($event, checkBox)"/>
             <label for="4A">4A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="4B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B4" id="4B" (change)="checkedState($event, checkBox)"/>
             <label for="4B">4B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="4C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C4" id="4C" (change)="checkedState($event, checkBox)"/>
             <label for="4C">4C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="4D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D4" id="4D" (change)="checkedState($event, checkBox)"/>
             <label for="4D">4D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="4E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E4" id="4E" (change)="checkedState($event, checkBox)"/>
             <label for="4E">4E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="4F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F4" id="4F" (change)="checkedState($event, checkBox)"/>
             <label for="4F">4F</label>
           </li>
         </ol>
@@ -121,27 +122,27 @@
       <li class="row row--5">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="5A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A5" id="5A" (change)="checkedState($event, checkBox)"/>
             <label for="5A">5A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="5B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B5" id="5B" (change)="checkedState($event, checkBox)"/>
             <label for="5B">5B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="5C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C5" id="5C" (change)="checkedState($event, checkBox)"/>
             <label for="5C">5C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="5D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D5" id="5D" (change)="checkedState($event, checkBox)"/>
             <label for="5D">5D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="5E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E5" id="5E" (change)="checkedState($event, checkBox)"/>
             <label for="5E">5E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="5F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F5" id="5F" (change)="checkedState($event, checkBox)"/>
             <label for="5F">5F</label>
           </li>
         </ol>
@@ -150,27 +151,27 @@
       <li class="row row--6">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="6A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A6" vid="6A" (change)="checkedState($event, checkBox)"/>
             <label for="6A">6A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="6B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B6" id="6B" (change)="checkedState($event, checkBox)"/>
             <label for="6B">6B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="6C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C6" id="6C" (change)="checkedState($event, checkBox)"/>
             <label for="6C">6C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="3D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D6" id="6D" (change)="checkedState($event, checkBox)"/>
             <label for="6D">6D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="6E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E6" id="6E" (change)="checkedState($event, checkBox)"/>
             <label for="6E">6E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="6F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F6" id="6F" (change)="checkedState($event, checkBox)"/>
             <label for="6F">6F</label>
           </li>
         </ol>
@@ -179,27 +180,27 @@
       <li class="row row--7">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="7A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A7" id="7A" (change)="checkedState($event, checkBox)"/>
             <label for="7A">7A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="7B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B7" id="7B" (change)="checkedState($event, checkBox)"/>
             <label for="7B">7B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="7C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C7" id="7C" (change)="checkedState($event, checkBox)"/>
             <label for="7C">7C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="7D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D7" id="7D" (change)="checkedState($event, checkBox)"/>
             <label for="7D">7D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="7E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E7" id="7E" (change)="checkedState($event, checkBox)"/>
             <label for="7E">7E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="7F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F7" id="7F" (change)="checkedState($event, checkBox)"/>
             <label for="7F">7F</label>
           </li>
         </ol>
@@ -207,27 +208,27 @@
       <li class="row row--8">
         <ol class="seats" type="A">
           <li class="seat">
-            <input type="checkbox" id="8A" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="A8" id="8A" (change)="checkedState($event, checkBox)"/>
             <label for="8A">8A</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="8B" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="B8" id="8B" (change)="checkedState($event, checkBox)"/>
             <label for="8B">8B</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="8C" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="C8" id="8C" (change)="checkedState($event, checkBox)"/>
             <label for="8C">8C</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="8D" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="D8" id="8D" (change)="checkedState($event, checkBox)"/>
             <label for="8D">8D</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="8E" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="E8" id="8E" (change)="checkedState($event, checkBox)"/>
             <label for="8E">8E</label>
           </li>
           <li class="seat">
-            <input type="checkbox" id="8F" (change)="checkedState($event, checkBox)"/>
+            <input type="checkbox" formControlName="F8" id="8F" (change)="checkedState($event, checkBox)"/>
             <label for="8F">8F</label>
           </li>
         </ol>
@@ -236,6 +237,7 @@
     </ol>
     <div class="exit"></div>
   </div>
+</form>
   <div class ="confirm">
     <div class = "details">
       <table>

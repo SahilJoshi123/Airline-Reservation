@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddFlightsComponent } from './add-flights/add-flights.component';
 import { SelectComponent } from './select/select.component';
-
+import { TicketinformationComponent} from './ticketinformation/ticketinformation.component';
 
 const routes: Routes = [
   {path:"book", component:BookComponent},
@@ -16,7 +16,8 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"addflights",component:AddFlightsComponent},
-  {path:"select", component:SelectComponent}
+  {path:"select", component:SelectComponent},
+  {path:"ticketinformation", component:TicketinformationComponent}
 ];
 
 @NgModule({

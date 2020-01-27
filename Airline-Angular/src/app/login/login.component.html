@@ -1,24 +1,30 @@
-<form (ngSubmit)="loadFlightSearch()" method="GET" class="h1" ngNativeValidate>
-    <div class="header">
-        <h1 class="h1">Login</h1>
+<!-- <div class="image_container">
+<img src="assets/img/Flight.jpg"><br>
+<img src="assets/img/Logo.png">
+</div> -->
+
+<div class="login_container">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="h1" ngNativeValidate>
+
+    
+        <div><h1 class="h1">LOGIN</h1></div>
         <table>   
             <tr>
-                 <td>  <label for="User Name"><b>User Name:</b></label></td>
-                 <td><input type="text" placeholder=" Enter UserName" name="username" required style="border:1px solid black;" size="27">
-                </td>
+                 <td><label for="User Name"><b>User Name:</b></label></td>
+                 <td><input type="text" placeholder=" Enter Email Id" formControlName="userName" required style="width: 90%; border:1px solid black;" size="30">
+                 </td>
            </tr><br>
             <tr> 
                 <td> 
                     <label for="Password"><b>Password:</b></label></td>
-                <td><input type="password" placeholder="Enter Password" name="password" required style="border:1px solid black;" size="27">
+                <td><input type="password" placeholder="Enter Password" [(ngModel)]="password" formControlName="password" required style="border:1px solid black; width: 90%;" size="30">
                 </td>
             </tr><br>
             <tr>
-            <td><input type="submit" value="Login" style="cursor:pointer; background-color:lightgreen; font-size: 16px;width:70%;" ></td>
-            <td><input type="button" value="Sign up" (click)="loadRegistrationPage()" style="cursor:pointer;background-color:lightcoral; font-size: 16px"></td>
-        </tr>
-            </table>
-            </div>
-            </form>
-
-
+                <td><input type="submit" value="Login" style="cursor:pointer; background-color:lightgreen; font-size: 16px;width:70%;" ></td>
+                <td><input type="button" value="Sign up" (click)="loadRegistrationPage()" style="cursor:pointer;background-color:lightcoral; font-size: 16px"></td>
+            </tr>
+        </table>
+        
+  </form>
+</div>
