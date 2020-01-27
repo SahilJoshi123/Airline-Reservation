@@ -29,11 +29,10 @@ export class SearchComponent implements OnInit {
     });
   }
   
-  Location: string[] = ['','Mumbai', 'Bangalore', 'Delhi','Hyderabad'];
+  Location: string[] = ['--Select--','Mumbai', 'Bangalore', 'Delhi','Hyderabad'];
 
   Travellers:number[]=[0,1,2,3,4,5,6,7,8,9];
-  numberOfPassengers:number;
-  Class: string[]=['Economy','Premium Economy','Business'];
+  Class: string[]=['--Select--','Economy','Business'];
   
   
   loadFlightDetails(data){
@@ -58,12 +57,11 @@ export class SearchComponent implements OnInit {
     this.service.fetchFlights(this.flightSearchDetails).subscribe(result =>{
       this.data = result;
       this.flightData = this.data;
-     // return this.result;
     });
-   //this.router.navigate(['select']);
   }
   loadBookingPage(data){
-    this.service.limit = this.addForm.controls.count.value;
+    this.service.ticketDetails.numberOfTickets = this.addForm.controls.count.value;
+    this.service.ticketDetails.travelClass = this.addForm.controls.class.value;
     this.service.flightDetails = data;
     this.router.navigate(['book']);
   }

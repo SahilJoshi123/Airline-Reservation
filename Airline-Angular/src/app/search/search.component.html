@@ -51,7 +51,7 @@
 </form>
 
 <div *ngIf="data" class="flights-container" style="margin-top:4%;">
-<h2 style="margin-left: 42%;">Flight Details</h2>
+<h2 style="margin-left: 40%;">Flight Details</h2>
 <div class="flights-container">
 <table>
  <tr *ngFor="let data of flightData">
@@ -69,10 +69,11 @@
         <td>{{data.arrivalTime}}</td>
      </div>
      <div>
-        <td><b>{{data.basePrice}}</b></td>
+       <td><b>Base Price</b></td>
+        <td>{{data.basePrice}}</td>
      </div>
     <div>
-       <td><input type="button" value="Book Now" class="booknow_button" (click)="loadBookingPage(data)"></td>
+       <td><input type="button" style="font-weight: bold;" value="Book Now" class="booknow_button" (click)="loadBookingPage(data)"></td>
     </div>
     </div>
   </tr>

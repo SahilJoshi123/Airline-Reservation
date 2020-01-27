@@ -13,11 +13,16 @@ export class BookComponent implements OnInit {
 
   constructor(private router: Router,private formBuilder:FormBuilder ,private service: MainDataService) { }
   seatForm:FormGroup;
- 
-  seats:any[];
+  class: string = this.service.ticketDetails.travelClass;
+  tax: number;
+
   bookedSeats:string[]=[];
   result:any;
   ngOnInit() {
+    if(this.class ==="Economy")
+      this.tax = 5;
+    else
+      this.tax = 12;
 
     this.service.getSeats(this.service.flightDetails.flightId).subscribe(data =>{
       this.result = data;
@@ -37,36 +42,36 @@ export class BookComponent implements OnInit {
       A6: [''], B6: [''], C6: [''], D6: [''], E6: [''], F6: [''] ,
       A7: [''], B7: [''], C7: [''], D7: [''], E7: [''], F7: [''] ,
       A8: [''], B8: [''], C8: [''], D8: [''], E8: [''], F8: ['']
-    })
-
-     
+    })     
   }
 
   loadPayment(): void{
-    
-    //this.router.navigateByUrl('/payment');
+    this.service.ticketDetails.totalCost = (this.basePrice*this.counter)+(this.basePrice*(this.tax/100));
+    this.router.navigate(['payment']);
   }
   
   basePrice:number = this.service.flightDetails.basePrice;
-  limit:number = this.service.limit;
+  limit:number = this.service.ticketDetails.numberOfTickets;
   counter:number = 0;
   selectedItems: number =0;
   
   checkedState(event, checkBox) {
             if(event.target.checked === true){
               if(this.counter < this.limit){
-                sea
               this.counter++;
+              let name = event.target.name
+              this.service.selectedSeats.push(name)
             }else{
                event.target.checked = false;
             }
             }else if(this.counter>0){
-              
               this.counter--;
+              this.service.selectedSeats.forEach( (item, index) => {
+                if(item === event.target.id) this.service.selectedSeats.splice(index,1);
+              });
+              
             }
         }
 }
 
-// this.seats.forEach( (item, index) => {
-//   if(item === event.target.id) this.service.selectedSeats.splice(index,1);
-// });
+

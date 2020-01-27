@@ -9,11 +9,14 @@ import { UserService } from './user.service';
 export class AppComponent {
   constructor(private userService: UserService, private router: Router){}
 
+  userLoggedIn: boolean;
+
   ngOnInit(){
-    this.router.navigate(['search'])
+    this.userLoggedIn = this.userService.loggedIn;
+    //this.router.navigate(['search'])
   }
 
-  userLoggedIn = this.userService.loggedIn;
+  
   userName = 'Sahil';
 
   loadRegister(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import { UserService } from '../user.service';
+import { MainDataService } from '../main-data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,10 @@ export class LoginComponent implements OnInit {
 
   addForm: FormGroup;
   result:any;
+  userId: any;
 
 
-  constructor(private router: Router,private formBuilder: FormBuilder,private userService: UserService){}
+  constructor(private router: Router,private formBuilder: FormBuilder,private userService: UserService, private service: MainDataService){}
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -31,25 +33,19 @@ export class LoginComponent implements OnInit {
     }
 
     this.userService.loginUser(credential).subscribe(data =>{
-      this.result = JSON.parse(JSON.stringify(data));
-
-      if(this.result!=null){
-        let pass = this.result["password"]
-
-        if(pass == this.password){
+      this.userId = data;
+      this.result = this.userId
+      
+      if(this.result!=0){
           this.userService.loggedIn = true;
+          this.service.ticketDetails.passengerId = this.result;
           alert('Login Successful');
           this.router.navigate(['search']);
         }
-        else{
-          alert('Incorrect Username or Password!');
-        }
-      }
       else{
         alert('Incorrect Username or Password!');
       }
     });
-  
   }
 
   

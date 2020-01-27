@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.airline.dao.AirlineDao;
-import com.airline.model.Credentials;
 import com.airline.model.FlightSearchDetails;
 import com.airline.model.Flights;
 import com.airline.model.LoginCredentials;
 import com.airline.model.PaymentDetails;
+import com.airline.model.SeatInfo;
+import com.airline.model.Tickets;
 import com.airline.model.User;
 
 @Service("service")
@@ -21,11 +22,11 @@ public class AirlineServiceImpl implements AirlineService {
 	@Autowired
 	private AirlineDao dao;
 
-	public int registerUser(User user) {
+	public long registerUser(User user) {
 		return dao.insertUser(user);
 	}
 
-	public Credentials getUser(LoginCredentials credential) {
+	public long getUser(LoginCredentials credential) {
 		return dao.fetchCredentials(credential);
 	}
 
@@ -37,7 +38,15 @@ public class AirlineServiceImpl implements AirlineService {
 		return dao.fetchSeats(flightId);
 	}
 
-	public PaymentDetails getPaymentConfirmation(PaymentDetails details) {
+	public int getPaymentConfirmation(PaymentDetails details) {
 		return dao.fetchPaymentConfirmation(details);
+	}
+
+	public int bookTicket(Tickets details) {
+		return dao.bookTicket(details);
+	}
+
+	public void bookSeats(SeatInfo seatDetails) {
+		dao.bookSeats(seatDetails);
 	}
 }

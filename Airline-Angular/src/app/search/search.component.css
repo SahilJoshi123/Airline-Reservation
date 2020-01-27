@@ -57,12 +57,18 @@
 
 .booknow_button{
   background-color: lightskyblue;
-  width:100%;
+  width:150%;
+  border-top-left-radius: 40%;
+  padding: 10px 10px 10px 10px;
+  border-radius: 30px;
+  border: 2px solid black;
+  cursor: pointer;
+  
 }
 
 .flights-container
 {
-  margin-left: 8.5%;
+  margin-left: 6%;
   margin-bottom:10%;
   margin-top: -2%;
 

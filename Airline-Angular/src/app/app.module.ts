@@ -11,7 +11,6 @@ import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddFlightsComponent } from './add-flights/add-flights.component';
-import { SelectComponent } from './select/select.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
@@ -28,7 +27,6 @@ import { TicketinformationComponent } from './ticketinformation/ticketinformatio
     RegisterComponent,
     LoginComponent,
     AddFlightsComponent,
-    SelectComponent,
     DeleteFlightComponent,
     TicketinformationComponent
   ],

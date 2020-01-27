@@ -6,7 +6,6 @@ import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddFlightsComponent } from './add-flights/add-flights.component';
-import { SelectComponent } from './select/select.component';
 import { TicketinformationComponent} from './ticketinformation/ticketinformation.component';
 
 const routes: Routes = [
@@ -16,7 +15,6 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"addflights",component:AddFlightsComponent},
-  {path:"select", component:SelectComponent},
   {path:"ticketinformation", component:TicketinformationComponent}
 ];
 

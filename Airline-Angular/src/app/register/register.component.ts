@@ -20,8 +20,7 @@ export class RegisterComponent implements OnInit {
 
   
 
-  constructor(private formBuilder: FormBuilder, private router: Router, 
-    private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -46,12 +45,12 @@ export class RegisterComponent implements OnInit {
     })
 
       if(this.password==this.confirmPassword){
-        if(this.result==null)
+        if(this.result!=0)
         {
           alert('User Already exists. Please Login.');
         }
       else{
-        alert("Login Successful. ")
+        alert("User Registered.")
         this.userService.loggedIn = true;
         this.userService.registerUser(this.addForm.value)
       .subscribe( data => {
