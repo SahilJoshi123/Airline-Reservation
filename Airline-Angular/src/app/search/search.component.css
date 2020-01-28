@@ -3,12 +3,12 @@
     padding: 20px;
     justify-content: left;
     font-size: 20px;
-    height: 203px;
+    height: 15%;
     border-radius: 75px;
     color: rgb(52, 82, 82);
     margin-top: 8%;
     margin-left: 13%;
-    width: 1000px;
+    width: 72%;
     box-shadow: 20px 20px 20px #aaaaaa;
    
   }
@@ -68,7 +68,7 @@
 
 .flights-container
 {
-  margin-left: 6%;
+  margin-left: 4.5%;
   margin-bottom:10%;
   margin-top: -2%;
 

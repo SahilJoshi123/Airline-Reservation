@@ -49,7 +49,19 @@ public class Seats {
 
 	public void setPassengerId(long passengerId) {
 		this.passengerId = passengerId;
+	}
+
+	public Seats(long flightId, String seatId, long passengerId) {
+		super();
+		this.flightId = flightId;
+		this.seatId = seatId;
+		this.passengerId = passengerId;
+	}
+
+	public Seats() {
 	}	
+	
+	
 	
 	
 	/*@OneToOne

@@ -23,19 +23,6 @@ public class Credentials {
 	
 	@Column(name="password")
 	private String password;
-	
-	/*@Transient
-    @OneToOne(mappedBy="credential", cascade=CascadeType.ALL)
-    private Passengers passenger;
-    
-	@Transient
-    @OneToOne(mappedBy="credential", cascade=CascadeType.ALL)
-    private Tickets ticket;
-    
-	@Transient
-    @OneToOne(mappedBy="credential", cascade=CascadeType.ALL)
-    private Seats seat;
-*/
 
 	public Credentials() {}
 

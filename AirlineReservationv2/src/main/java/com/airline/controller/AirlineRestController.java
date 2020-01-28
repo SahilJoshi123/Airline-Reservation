@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.airline.model.Credentials;
+import com.airline.model.FlightDetails;
 import com.airline.model.FlightSearchDetails;
 import com.airline.model.Flights;
 import com.airline.model.LoginCredentials;
+import com.airline.model.Passengers;
 import com.airline.model.PaymentDetails;
 import com.airline.model.SeatInfo;
 import com.airline.model.Tickets;
@@ -34,9 +36,16 @@ public class AirlineRestController {
 	private AirlineService service;
 	
 	// http://localhost:9090/
-	@RequestMapping(method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
-	public long registerPassenger(@RequestBody User user){
+	@RequestMapping(method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody long registerPassenger(@RequestBody User user){
 		long result = service.registerUser(user);
+	    return result;
+	}
+	
+	// http://localhost:9090/{userId}
+	@RequestMapping(path="{userId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Passengers getUser(@PathVariable("userId") long userId){
+		Passengers result = service.getUser(userId);
 	    return result;
 	}
 	
@@ -44,6 +53,7 @@ public class AirlineRestController {
 	@RequestMapping(path="login", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody long getCredentials(@RequestBody LoginCredentials credential){
 		long result = service.getUser(credential);
+		System.out.println(result);
 	    return result;
 	}
 	
@@ -88,10 +98,24 @@ public class AirlineRestController {
 	public @ResponseBody void bookSeats(@RequestBody SeatInfo seatDetails){
 		service.bookSeats(seatDetails);
 	}
-
+	
+	// http://localhost:9090/ticket/{userId}
+	@RequestMapping(path="ticket/{userId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Tickets getTicket(@PathVariable("userId") long userId){
+		return service.getTicket(userId);
+	}
+	
+	// http://localhost:9090/addFlight
+	@RequestMapping(path="addFlight", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody int addFlight(@RequestBody FlightDetails details){
+		int result = service.addFlightDetails(details);
+	    return result;
+	}
+	
 	@ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex){
 		ResponseEntity<String> error = new ResponseEntity<String>("Error: "+ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		return error;
 	}
+	
 }

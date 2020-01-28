@@ -1,19 +1,14 @@
 
 <form [formGroup]="addForm" (ngSubmit)="loadFlightDetails()" method="GET" class="h1">
-<div class="header" style="border: 2px solid;">
-  
-  <input formControlName="travelType" type="radio" name="travelType" value="ONEWAY" >ONEWAY
-  <input formControlName="travelType" type="radio" name="travelType" value="ROUND-TRIP">ROUND TRIP<br><br>
-
-  
+<div class="header" style="border: 2px solid; padding-top: 5%;">
     Source:
   <select formControlName="source" required style=" height: 30px; ">
     <option *ngFor="let loc of Location">{{loc}}</option>
-  </select>
+  </select>&nbsp;
   
 
   Destination:
-  <select formControlName="destination" required style=" height: 30px; margin-left: 10px;">
+  <select formControlName="destination" required style=" height: 30px; margin-left:1px;">
     <option *ngFor="let loc of Location">{{loc}}</option>
   </select> 
   &nbsp;&nbsp;
@@ -22,17 +17,9 @@
     Departure date:
   <input formControlName="departureDate" type="date"  value="Departure Date" style=" height: 30px; border:1px solid black; border-radius: 10px;" required/>
   
-  &nbsp;&nbsp;
-    Return date:
-  <input formControlName="returnDate" type="date" value="Return Date" style=" height: 30px; border:1px solid black; border-radius: 10px;">
-
-  &nbsp;&nbsp;
-  <br>
-  
-  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
   Travellers:
-  <select formControlName="count" style="margin-right: 500px; height: 30px;"> 
+  <select formControlName="count" style=" height: 30px;"> 
     <option *ngFor="let num of Travellers">{{num}}</option>
   </select>
 
@@ -42,8 +29,6 @@
   </select>
   <br>
 <br>
-<br>
-
 <div style="text-align: center;" class="search"> 
   <input type="submit" value="Search" class="button">
   </div>
@@ -62,11 +47,11 @@
      </div>
      <div>
         <td><b>{{data.source}}</b></td>
-        <td>{{data.departureTime}}</td>
+        <td>{{data.arrivalTime}}</td>
      </div>
      <div>  
         <td><b>{{data.destination}}</b></td>
-        <td>{{data.arrivalTime}}</td>
+        <td>{{data.departureTime}}</td>
      </div>
      <div>
        <td><b>Base Price</b></td>

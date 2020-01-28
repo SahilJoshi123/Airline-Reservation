@@ -7,25 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class MainDataService {
 baseUrl = "http://192.168.12.118:9090/";
 
-basePrice:number;
-totalPrice:number;
-
 selectedSeats = new Array();
-
-flightData:any;
-result: any;
-flightDetails: any;
-
-ticketDetails ={ "passengerId":0,
-                          "flightId":0,
-                          "departureDate": "",
-                          "departureTime": "",
-                          "airportName": "",
-                          "travelClass": "",
-                          "numberOfTickets": 0,
-                          "totalCost": 0,
-                          "status": ""
-  };
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +21,10 @@ ticketDetails ={ "passengerId":0,
 
   getPaymentConfirmation(paymentDetails: any){
     return this.http.post(this.baseUrl+"payment",paymentDetails)
+  }
+
+  getTicket(passengerId: number){
+    return this.http.get(this.baseUrl+"ticket/"+passengerId)
   }
 
   bookTicket(ticketDetails: any){

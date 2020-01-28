@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { UserService } from '../user.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private parent: AppComponent, private formBuilder: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -41,28 +42,31 @@ export class RegisterComponent implements OnInit {
       return;
     }
       this.userService.loginUser(credential).subscribe(data =>{
-      this.result = data;
-    })
-
+      this.result = data;    
+       
       if(this.password==this.confirmPassword){
         if(this.result!=0)
         {
-          alert('User Already exists. Please Login.');
+          alert('Could not Register.');
         }
       else{
         alert("User Registered.")
         this.userService.loggedIn = true;
         this.userService.registerUser(this.addForm.value)
       .subscribe( data => {
-        
+        this.result = data;
+        localStorage.setItem("userId", this.result)
+        localStorage.setItem("userName",this.addForm.controls.firstName.value)
+        this.parent.ngOnInit();
+        this.router.navigate(['search']);
       });
-      this.router.navigate(['search']);
       }
     }
     else{
       alert("Password mismatch!");
       this.confirmPassword='';
       }
+    })
   }
 
   loadLoginPage(){

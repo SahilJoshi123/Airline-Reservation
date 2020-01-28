@@ -1,75 +1,73 @@
-<form  >
-  <div class="row" >
-    <div class="column" style="float: left; margin-left: 20%;">
-     
-      
+<form  [formGroup]="addFlights" (ngSubmit)="nextPage()" method="GET">
+    <h1 style="color:indigo; margin-left: 40%;">Administrator Page</h1>
+     <div class="leftDiv">
+         <h1 style="color:indigo; margin-left: 10%;">Add Flight</h1>
       <table>
             <tr>
-                    <td>  <label for="Airport Name" ><b>Airport Name:</b></label></td>
-                    <td><input type="text" placeholder=" Enter Airport Name" name="airportName" required style="border:1px solid black;">
-                   </td>
-            </tr><br>
+                    <td><label for="Airport Name" ><b>Airport Name:</b></label></td>
+                    <td><input  type="text" formControlName="airportName" placeholder=" Enter Airport Name" name="airportName" required style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                <td>  <label for="Airline Name" ><b>Airline Name:</b></label></td>
+                <td><input type="text" formControlName="airlineName" placeholder=" Enter Airline Name" name="airlineName" required style="border: 1px solid black;"></td>
+            </tr>
             
             
             <tr>
-                    <td>  <label for="Source"><b>Source:</b></label></td>
-                    <td><input type="text" placeholder=" Enter Source" name="source" required style="border:1px solid black;">
-                    </td>
-                </tr><br>
-            
+                    <td><label for="Source"><b>Source:</b></label></td>
+                    <td><input type="text" formControlName="source" placeholder=" Enter Source" name="source" required style="border: 1px solid black;"></td>
+            </tr>
+            <tr>
+                    <td>  <label for="Destination"><b>Destination:</b></label></td>
+                    <td><input type="text" formControlName="destination" placeholder=" Enter Destination" name="destination" required style="border: 1px solid black;"></td>
+            </tr>
+             
                 <tr>
-                    <td>  <label for="Departure Date"><b>Departure Date:</b></label></td>
-                     <td><input type="date" placeholder=" Enter Departure Date" name="departureDate" required style="border:1px solid black;">
-                    </td>
-                </tr><br>
+                    <td><label for="Departure Date"><b>Departure Date:</b></label></td>
+                     <td><input type="date" formControlName="departureDate" placeholder=" Enter Departure Date" name="departureDate" required style="border: 1px solid black; width: 98%;"></td>
+                </tr>
                 <tr>
                     <td>  <label for="Departure Time"><b>Departure Time:</b></label></td>
-                    <td><input type="text" placeholder=" 13:00" name="departureTime" required style="border:1px solid black;">
-                   </td>
-                </tr><br>
-                <tr>
-                    <td>  <label for="Base Price"><b>Base Price:</b></label></td>
-                    <td><input type="text" placeholder=" Enter Base Price" name="basePrice" required style="border:1px solid black;">
-                   </td><br>
-            </tr>
-      </table>
-     
-    </div>
-
-
-    <div class="column"  style="float: right; margin-right: 30%;">
-    
-        <div>
-            <table>
-                <tr>
-                        <td>  <label for="Airline Name" ><b>Airline Name:</b></label></td>
-                        <td><input type="text" placeholder=" Enter Airline Name" name="airlineName" required style="border:1px solid black; margin-left: 25%;">
-                       </td>
-                </tr><br>
-                <tr>
-                        <td>  <label for="Destination"><b>Destination:</b></label></td>
-                        <td><input type="text" placeholder=" Enter Destination" name="destination" required style="border:1px solid black;margin-left: 25%;">
-                       </td>
-                </tr><br>
+                    <td><input type="text" formControlName="departureTime" placeholder=" 13:00" name="departureTime" required style="border: 1px solid black;"></td>
+                </tr>
                 <tr>
                         <td>  <label for="Arrival Time"><b>Arrival Time:</b></label></td>
-                        <td><input type="text" placeholder=" 12:00" name="arrivalTime" required style="border:1px solid black;margin-left: 25%;">
-                       </td>
-                </tr><br>
+                        <td><input type="text" formControlName="arrivalTime" placeholder=" 12:00" name="arrivalTime" required style="border: 1px solid black;"></td>
+                </tr>
                 <tr>
                         <td>  <label for="Duration"><b>Duration:</b></label></td>
-                        <td><input type="text" placeholder="1hr 30min" name="duration" required style="border:1px solid black;margin-left: 25%;">
-                       </td>
-                </tr><br>
+                        <td><input type="text" formControlName="duration" placeholder="1hr 30min" name="duration" required style="border: 1px solid black;"></td>
+                </tr>
                 <tr>
-
-                        <td>
-                        <div style="text-align: center;margin-left: 25%;" > 
-                        <input type="submit" value="Add Flight" class="button"></div></td>
-                </tr><br>
+                    <td>  <label for="Base Price"><b>Base Price:</b></label></td>
+                    <td><input type="text" formControlName="basePrice" placeholder=" Enter Base Price" name="basePrice" required style="border: 1px solid black;"></td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <div>
+                            <input type="submit" value="Add Flight" (click)="nextPage()" class="button"></div></td>
+                </tr>
+            
             </table>
         </div>
-    </div>
-    </div>
-  
-</form>
+
+        <div class="rightDiv"> 
+            <h1 style="color: indigo; margin-left: 17%;">Delete Flight</h1> 
+          <table>
+            <tr>
+                <td><label for="Flight Id" style="margin-left: 17%;"><b>Flight Id:</b></label></td>
+                <td><input  type="text" formControlName="flightId" placeholder=" Enter Flight Id" name="flightId" required style="border: 1px solid black;"></td>
+            </tr> 
+            <br> 
+            
+            <tr>
+                <td>
+                    <div>
+                        <input type="button" value="Delete Flight" (click)="deleteFlight()" class="button"></div></td>
+            </tr>
+
+          </table>
+           
+        </div>
+    </form>

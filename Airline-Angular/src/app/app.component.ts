@@ -10,14 +10,23 @@ export class AppComponent {
   constructor(private userService: UserService, private router: Router){}
 
   userLoggedIn: boolean;
+  userName:string;
 
   ngOnInit(){
-    this.userLoggedIn = this.userService.loggedIn;
-    //this.router.navigate(['search'])
+    if(+localStorage.getItem("userId")>0){
+      this.userLoggedIn = true;
+      this.userName = localStorage.getItem("userName");
+    }
+    else{
+      this.userLoggedIn = false
+      this.userName = 'Visitor'
+    }
+    this.router.navigate(['search'])
   }
 
-  
-  userName = 'Sahil';
+  loadMyProfile(){
+    this.router.navigate(['userprofile']);
+  }
 
   loadRegister(){
     this.router.navigate(['register'])
@@ -25,5 +34,12 @@ export class AppComponent {
 
   loadLogin(){
     this.router.navigate(['login'])
+  }
+
+  logout(){
+    localStorage.setItem("userId",'0');
+    alert('Logout Successful');
+    this.ngOnInit();
+    this.router.navigate(['search'])
   }
 }

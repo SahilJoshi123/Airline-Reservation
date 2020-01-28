@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-add-flights',
   templateUrl: './add-flights.component.html',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddFlightsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+  nextPage()
+  {
+    this.router.navigate(['/addflights']);
+    alert("Flight added.");
+  }
+  deleteFlight()
+  {
+    this.router.navigate(['/addflights']);
+    alert("Flight deleted.");
   }
 
 }

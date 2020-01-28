@@ -1,4 +1,38 @@
-.row{
-    margin-top: 7%;
+.leftDiv
+{
+    border: 2px solid black;
+    width: 28%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 5px 5px 5px 5px;
+    padding-left: 5%;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px #aaaaaa;
+    
 }
+table{ 
+    border-collapse:separate; 
+    border-spacing: 0 13px; 
+    }
 
+.rightDiv
+{
+    float: right;
+    border: 2px solid black;
+    margin-bottom: 10%;
+    margin-top: -33.5%;
+    margin-right: 20%;
+    float: right; 
+    padding: 10px 10px 10px 10px;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px #aaaaaa;
+      
+}
+.button{
+    border-radius: 15%;
+    margin-left: 80%;
+    padding: 7px 7px 7px 7px;
+    background-color:rgb(93, 158, 219);
+ 
+
+}

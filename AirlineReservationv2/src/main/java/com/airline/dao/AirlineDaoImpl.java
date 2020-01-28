@@ -12,9 +12,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.airline.model.Credentials;
+import com.airline.model.FlightDetails;
 import com.airline.model.FlightSearchDetails;
 import com.airline.model.Flights;
 import com.airline.model.LoginCredentials;
+import com.airline.model.Passengers;
 import com.airline.model.PaymentDetails;
 import com.airline.model.SeatInfo;
 import com.airline.model.Seats;
@@ -74,7 +76,8 @@ public class AirlineDaoImpl implements AirlineDao{
 				
 			}
 		}catch(Exception e){
-			System.out.println("Exception");
+			System.out.println("-------------------------------");
+			System.out.println(e);
 			return 0;
 		}
 		return 0;
@@ -94,7 +97,7 @@ public class AirlineDaoImpl implements AirlineDao{
 	}
 
 	public List<String> fetchSeats(long flightId) {
-		String jpql = "SELECT s FROM Seats s WHERE flightId = :flightId AND passengerId IS NOT null";
+		String jpql = "SELECT s FROM Seats s WHERE flightId = :flightId";
 		TypedQuery<Seats> query = entityManager.createQuery(jpql, Seats.class);
 		query.setParameter("flightId", flightId);
 		List<String> seatList = new ArrayList<String>();
@@ -134,7 +137,6 @@ public class AirlineDaoImpl implements AirlineDao{
 	public int bookTicket(Tickets details) {
 		String sql = "INSERT INTO Tickets(Ticket_Number, Passenger_Id, Flight_Id, Departure_Date, Departure_Time, Airport_Name, Class, Number_Of_Tickets, Total_Cost, Status) "
 				+ "VALUES(ticket_number_seq.NEXTVAL, :passengerId, :flightId, :departureDate, :departureTime, :airportName, :travelClass, :numberOfTickets, :totalCost, :status)";
-		System.out.println(details.getPassengerId());
 		Query query = entityManager.createNativeQuery(sql);
 		query.setParameter("passengerId", details.getPassengerId());
 		query.setParameter("flightId", details.getFlightId());
@@ -151,12 +153,11 @@ public class AirlineDaoImpl implements AirlineDao{
 	
 	@Transactional
 	public void bookSeats(SeatInfo seatDetails){
+		
 		String getAvailableSeatsJpql = "From Flights WHERE flightId = :flightId";
 		TypedQuery<Flights> query2 = entityManager.createQuery(getAvailableSeatsJpql, Flights.class);
 		query2.setParameter("flightId", seatDetails.getFlightId());
 		int availableSeats = query2.getSingleResult().getAvailableSeats()-seatDetails.getSeats().size();
-		
-		
 		
 		String updateAvailableSeatsJpql = "UPDATE Flights SET availableSeats = :availableSeats WHERE flightId = :flightId";
 		
@@ -165,13 +166,43 @@ public class AirlineDaoImpl implements AirlineDao{
 		query3.setParameter("flightId", seatDetails.getFlightId());
 		query3.executeUpdate();
 		
-		String updateJpql = "UPDATE Seats SET passengerId = :userId WHERE flightId = :flightId AND seatId = :seatId";
 		for (String seat : seatDetails.getSeats()) {
-			Query query = entityManager.createQuery(updateJpql);
-			query.setParameter("userId", seatDetails.getUserId());
-			query.setParameter("flightId", seatDetails.getFlightId());
-			query.setParameter("seatId", seat);
-			query.executeUpdate();
+			Seats seats = new Seats(seatDetails.getFlightId(), seat, seatDetails.getUserId());
+			entityManager.persist(seats);
 		}
+	}
+
+	public Tickets fetchTicket(long userId) {
+		String jpql = "SELECT t FROM Tickets t WHERE t.passengerId = :userId";
+		TypedQuery<Tickets> query = entityManager.createQuery(jpql, Tickets.class);
+		query.setParameter("userId", userId);
+		return query.getSingleResult();
+	}
+
+	public Passengers fetchUser(long userId) {
+		String jpql = "FROM Passengers WHERE passengerId = :userId";
+		TypedQuery<Passengers> query = entityManager.createQuery(jpql, Passengers.class);
+		query.setParameter("userId", userId);
+		Passengers user = query.getSingleResult();
+		return user;
+	}
+
+	@Transactional
+	public int addFlights(FlightDetails details) {
+		String sql = "INSERT INTO Flights(Flight_Id, Airport_Name, Airline_Name, Source, Destination, Departure_Date, Departure_Time, Arrival_Time, Duration, Total_Seats, Available_Seats, Base_Price) "
+				+ "VALUES(flight_id_seq.NEXTVAL, :airportName, :airlineName, :source, :destination, :departureDate, :departureTime, :arrivalTime, :duration, 48, 48, :basePrice)";
+		
+		Query query = entityManager.createNativeQuery(sql);
+		query.setParameter("airportName", details.getAirportName());
+		query.setParameter("airlineName", details.getAirlineName());
+		query.setParameter("source", details.getSource());
+		query.setParameter("destination",details.getDestination());
+		query.setParameter("departureDate", details.getDepartureDate());
+		query.setParameter("departureTime", details.getDepartureTime());
+		query.setParameter("arrivalTime", details.getArrivalTime());
+		query.setParameter("duration", details.getDuration());
+		query.setParameter("basePrice", details.getBasePrice());
+		return query.executeUpdate();
+		
 	}
 }

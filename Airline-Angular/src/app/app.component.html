@@ -1,16 +1,19 @@
-<header>
-    <img src="assets/img/airline-logo.jpg">
-    <b>Airline Reservation</b>    
-
-     <!-- <div *ngIf="userLoggedIn" class="headerNavigate">
-        <button (click)="loadMyProfile()">My Profile</button>
+<div class="container">
+    <div>
+        <a href="/search"><img src="assets/img/airline-logo.jpg" ></a>
     </div>
 
-    <div *ngIf="!userLoggedIn" class="headerNavigate">
-        
-        <button (click)="loadRegister()" style="width: 40%;" >Register</button>
-        <button (click)="loadLogin()" style="width: 40%;">Login</button>
-    </div>  -->
-</header>
+<div class="airline">
+    <b class="head">Airline Reservation</b>   
+</div> 
+
+<div *ngIf="userLoggedIn" class="navigate">
+   <b style="margin-right: 1%;">Hello {{userName}}!</b><button (click)="loadMyProfile()" style="margin-right: 1%;">Profile</button> <button (click)="logout()">Logout</button>
+</div>
+
+<div class="button_class" *ngIf="!userLoggedIn" class="navigate">
+<b style="margin-right: 1%;">Hello {{userName}}!</b><button (click)="loadRegister()" style="margin-right: 1%;" >Register</button> <button (click)="loadLogin()" >Login</button>
+</div>
+   
+</div>
 <router-outlet></router-outlet>
-<footer></footer>

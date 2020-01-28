@@ -2,6 +2,7 @@ package com.airline.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -20,7 +21,7 @@ public class Passengers {
 	@Column(name = "passenger_id")
 	private long passengerId;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY)
 	@PrimaryKeyJoinColumn(name="passenger_id", referencedColumnName="user_id")
 	private Credentials credential;
 	

@@ -1,64 +1,76 @@
-<form>
-    <div class="container">
-        <table>
-        <tr>
-            <td>
-                <h1 class="h1">Ticket Information</h1>
-                <label name="ticketNumber">Ticket Number:</label>
-            </td>
-        </tr> 
-        <tr>
-            <td>
-                <label name="from">From:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="to">To:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="passangerName">Passanger Name:</label>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>
-                <label name="departureDate">Departure Date:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="departureTime">Departure Time:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="airportName">Airport Name: </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="class">Class:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="numberOfTickets">Number of Tickets:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="seats">Seats:</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label name="totalCost">Total Cost:</label>
-            </td>
-        </tr>
+<div class="container">
+    <table>
+    <!-- <tr>
+        <td>
+            <h1 class="h1">Ticket Information</h1>
+            <label name="ticketNumber">Ticket Number:</label>
+        </td>
+    </tr>  -->
+    <tr>
+        <td>
+            <label name="from"><b>From:</b> {{ticket.source}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="to"><b>To: </b> {{ticket.destination}}</label>
+        </td>
+    </tr>
+    <!-- <tr>
+        <td>
+            <label name="passangerName">Passanger Name:</label>
+        </td>
+    </tr> -->
+    
+    <tr>
+        <td>
+            <label name="departureDate"><b>Departure Date:</b> {{ticket.departureDate}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="departureTime"><b>Departure Time:</b> {{ticket.departureTime}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="airportName"><b>Airport Name:</b> {{ticket.airportName}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="class"><b>Class:</b> {{ticket.travelClass}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="numberOfTickets"><b>Number of Tickets:</b> {{ticket.numberOfTickets}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="seats"><b>Seats:</b> {{ticket.seats}}</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label name="totalCost"><b>Total Cost:</b> {{ticket.totalCost}}</label>
+        </td>
+    </tr>
 
-      </table>
-    </div>
-</form>
+    </table>
+</div>
+
+<div class="rightDiv">
+    <tr>
+        <td>
+            <div> 
+                <input type="button" value="Download Pdf" (click)="downloadPdf()" class="downloadPdf"></div></td>
+    </tr>
+    <br>
+    <tr>
+        <td>
+            <div>
+                <input type="submit" value="Cancel Ticket" (click)="cancelTicket('ticketNumber')" class="cancelTicket"></div></td>
+    </tr>
+</div>

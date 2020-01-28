@@ -36,34 +36,52 @@ export class SearchComponent implements OnInit {
   
   
   loadFlightDetails(data){
-  // {
-    //  let date = new Date(this.addForm.controls.departureDate.value);
-    //  let dateArray: string[] = date.toString().split(" ");
-    //  let formattedDate = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[3].substring(2,4);
+  
+     let date = new Date(this.addForm.controls.departureDate.value);
+     let dateArray: string[] = date.toString().split(" ");
+     let formattedDate = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[3].substring(2,4);
 
-    //  this.flightSearchDetails = {
-    //   "source":this.addForm.controls.source.value,
-    //    "destination":this.addForm.controls.destination.value,
-    //    "destinationDate":formattedDate,
-    //    "seats": this.addForm.controls.count.value
-    //  };
+     this.flightSearchDetails = {
+      "source":this.addForm.controls.source.value,
+       "destination":this.addForm.controls.destination.value,
+       "destinationDate":formattedDate,
+       "seats": this.addForm.controls.count.value
+     };
     
-    this.flightSearchDetails = {
-      "source":"Mumbai",
-      "destination":"Delhi",
-      "destinationDate":"03-Feb-20",
-      "seats": "1"
-    };
+    // this.flightSearchDetails = {
+    //   "source":"Mumbai",
+    //   "destination":"Delhi",
+    //   "destinationDate":"03-Feb-20",
+    //   "seats": "1"
+    // };
     this.service.fetchFlights(this.flightSearchDetails).subscribe(result =>{
       this.data = result;
       this.flightData = this.data;
     });
   }
+
   loadBookingPage(data){
-    this.service.ticketDetails.numberOfTickets = this.addForm.controls.count.value;
-    this.service.ticketDetails.travelClass = this.addForm.controls.class.value;
-    this.service.flightDetails = data;
+    if(+localStorage.getItem("userId")>0){
+    data.departureDate = data.departureDate.split(' ')[0];
+    let ticketDetails ={ "passengerId":0,
+                          "flightId":0,
+                          "departureDate": "",
+                          "departureTime": "",
+                          "airportName": "",
+                          "travelClass": "",
+                          "numberOfTickets": 0,
+                          "totalCost": 0,
+                          "status": ""
+  };
+  ticketDetails.passengerId = +localStorage.getItem("userId");
+    ticketDetails.numberOfTickets = this.addForm.controls.count.value;
+    ticketDetails.travelClass = this.addForm.controls.class.value;
+    localStorage.setItem("ticketDetails", JSON.stringify(ticketDetails));
+    localStorage.setItem("flightDetails", JSON.stringify(data));
     this.router.navigate(['book']);
   }
-
+  else{
+    alert('Please Login to Book Flights!');
+  }
+}
 }

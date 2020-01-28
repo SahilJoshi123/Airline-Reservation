@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import { UserService } from '../user.service';
 import { MainDataService } from '../main-data.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   userId: any;
 
 
-  constructor(private router: Router,private formBuilder: FormBuilder,private userService: UserService, private service: MainDataService){}
+  constructor(private router: Router,private formBuilder: FormBuilder,private userService: UserService, private service: MainDataService, private parent: AppComponent){}
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
       password:[''],
     });
   }
-  
+  result2: any;
   onSubmit() {
     let credential = {"emailId": this.addForm.controls.userName.value, "password":this.addForm.controls.password.value};
     if(this.addForm.invalid){
@@ -37,11 +38,16 @@ export class LoginComponent implements OnInit {
       this.result = this.userId
       
       if(this.result!=0){
-          this.userService.loggedIn = true;
-          this.service.ticketDetails.passengerId = this.result;
-          alert('Login Successful');
-          this.router.navigate(['search']);
-        }
+            localStorage.setItem("userId",this.result);
+            this.userService.getUserName(this.result).subscribe(data=>{
+              this.result2 = JSON.parse(JSON.stringify(data));
+              this.parent.ngOnInit();
+              this.router.navigate(['search']);
+              alert('Login Successful');
+              localStorage.setItem("userName", this.result2.firstName);
+          });
+          
+         }
       else{
         alert('Incorrect Username or Password!');
       }

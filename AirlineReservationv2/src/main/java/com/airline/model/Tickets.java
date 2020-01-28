@@ -7,7 +7,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.hibernate.annotations.Fetch;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,17 +26,18 @@ public class Tickets {
 	private long passengerId;
 	
 	@OneToOne
+	@Transient
 	@PrimaryKeyJoinColumn(name="passenger_id", referencedColumnName="user_id")
 	private Credentials credential;
 	
 	@Column(name = "flight_id")
 	private long flightId;
 	
-	@ManyToOne
+	@OneToOne
 	@PrimaryKeyJoinColumn(name="flight_id", referencedColumnName="flight_id")
 	private Flights flight;
 	
-	@Column(name="departure_String")
+	@Column(name="departure_date")
 	private String departureDate;
 	
 	@Column(name="departure_time")

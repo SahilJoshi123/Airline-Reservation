@@ -20,6 +20,10 @@ export class UserService {
   loginUser(credential: any){
     return this.http.post(this.baseUrl+"login", credential);
   }
+
+  getUserName(userId: number){
+    return this.http.get(this.baseUrl+userId);
+  }
  
   
 }

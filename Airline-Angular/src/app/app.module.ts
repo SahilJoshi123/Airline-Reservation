@@ -17,6 +17,8 @@ import { UserService } from './user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
 import { TicketinformationComponent } from './ticketinformation/ticketinformation.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TicketinformationComponent } from './ticketinformation/ticketinformatio
     LoginComponent,
     AddFlightsComponent,
     DeleteFlightComponent,
-    TicketinformationComponent
+    TicketinformationComponent,
+    UserprofileComponent
+   
   ],
   imports: [
     BrowserModule,
