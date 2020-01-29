@@ -5,20 +5,20 @@
         <table>   
             <tr>
                  <td>  <label for="First Name"><b>First Name:</b></label></td>
-                 <td><input type="text" placeholder=" Enter First Name" name="firstName" formControlName="firstName" required style="border:1px solid black;" size="25">
+                 <td><input type="text" autocomplete="off" placeholder=" Enter First Name" name="firstName" formControlName="firstName" required style="border:1px solid black;" size="25">
                 </td>
            </tr>
             <tr> 
                 <td> 
                     <label for="Last Name"><b>Last Name:</b></label></td>
-                <td><input type="text" placeholder="Enter Last Name" name="lastName" formControlName="lastName" required style="border:1px solid black;" size="25">
+                <td><input type="text" autocomplete="off" placeholder="Enter Last Name" name="lastName" formControlName="lastName" required style="border:1px solid black;" size="25">
                 </td>
             </tr>
 
             <tr> 
                 <td> 
                     <label for="Gender"><b>Gender:</b></label></td>
-                <td><select formControlName="gender" name = "gender" style="width: 100%;">
+                <td><select formControlName="gender" name = "gender" style="border: 1px solid black;">
                     <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
@@ -30,7 +30,7 @@
                 <td> 
                   <label for="Age"><b>Age:</b></label></td>
                 <td>
-                    <input type="text" placeholder="Age" name="age" formControlName="age" pattern = "[1-9][0-9]{1,2}" required style="border:1px solid black;" size="25"></td>
+                    <input type="text" placeholder="Age" autocomplete="off" name="age" formControlName="age" pattern = "[1-9][0-9]{1,2}" required style="border:1px solid black;" size="25"></td>
            </tr>
     
    
@@ -38,14 +38,14 @@
               <td>
                 <label for="PhoneNumber"><b>Phone Number:</b></label></td>
               <td>
-                  <input type="text" placeholder="Phone Number" name="mobileNumber" formControlName="mobileNumber" pattern="[1-9][0-9]{9,9}" required style="border:1px solid black;" size="25"></td>
+                  <input type="text" placeholder="Phone Number" autocomplete="off" name="mobileNumber" formControlName="mobileNumber" pattern="[1-9][0-9]{9,9}" required style="border:1px solid black;" size="25"></td>
            </tr> 
     
           <tr>
               <td>
                 <label for="Email ID"><b>Email ID:</b></label></td>
              <td> 
-                 <input type="text" placeholder="Enter Email" name="emailId" formControlName="emailId" pattern="[a-zA-Z0-9]+@[a-z]+\.com" required style="border:1px solid black;" size="25"> </td>
+                 <input type="text" placeholder="Enter Email" autocomplete="off" name="emailId" formControlName="emailId" pattern="[a-zA-Z0-9]+@[a-z]+\.com" required style="border:1px solid black;" size="25"> </td>
          </tr>
 
         <tr>
@@ -64,8 +64,8 @@
 
 
         <tr>
-            <td><input type="submit" value="Register" class = "button1" style=" background-color:lightgreen; "></td>
-            <td><input type="button" value="Cancel" (click)="loadLoginPage()" class = "button2" style="background-color:lightcoral;"></td>
+            <td><input type="submit" value="Register" class = "button1" ></td>
+            <td><input type="button" value="Cancel" (click)="loadLoginPage()" class = "button2"></td>
         </tr>
     </table>
 </div>

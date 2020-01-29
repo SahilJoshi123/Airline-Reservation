@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.airline.model.Credentials;
 import com.airline.model.FlightDetails;
 import com.airline.model.FlightSearchDetails;
 import com.airline.model.Flights;
@@ -64,13 +63,6 @@ public class AirlineRestController {
 		return result;
 	}
 	
-	// http://localhost:9090/seats/{flightId}
-	@RequestMapping(path="seats/{flightId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<String> getBookedSeats(@PathVariable("flightId") long flightId){
-		List<String> result = service.getBookedSeats(flightId);
-		return result;
-	}
-	
 	// http://localhost:9090/payment
 	@RequestMapping(path="payment", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody PaymentDetails getPaymentConfirmation(@RequestBody PaymentDetails details){
@@ -99,10 +91,30 @@ public class AirlineRestController {
 		service.bookSeats(seatDetails);
 	}
 	
+	// http://localhost:9090/seats/{flightId}
+	@RequestMapping(path="seats/{flightId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<String> getBookedSeats(@PathVariable("flightId") long flightId){
+		List<String> result = service.getBookedSeats(flightId);
+		return result;
+	}
+	
+	// http://localhost:9090/userSeats/{flightId}/{userId}
+	@RequestMapping(path="userSeats/{flightId}/{userId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<String> getUserBookedSeats(@PathVariable("flightId") long flightId, @PathVariable("userId") long userId){
+		List<String> result = service.getUserBookedSeats(flightId, userId);
+		return result;
+	}
+		
 	// http://localhost:9090/ticket/{userId}
 	@RequestMapping(path="ticket/{userId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Tickets getTicket(@PathVariable("userId") long userId){
+	public @ResponseBody List<Tickets> getTicket(@PathVariable("userId") long userId){
 		return service.getTicket(userId);
+	}
+	
+	// http://localhost:9090/cancel/{ticketNumber}
+	@RequestMapping(path="cancel/{ticketNumber}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody int cancelTicket(@PathVariable("ticketNumber") long ticketNumber){
+		return service.cancelTicket(ticketNumber);
 	}
 	
 	// http://localhost:9090/addFlight
@@ -110,6 +122,12 @@ public class AirlineRestController {
 	public @ResponseBody int addFlight(@RequestBody FlightDetails details){
 		int result = service.addFlightDetails(details);
 	    return result;
+	}
+	
+	// http://localhost:9090/deleteFlight/{flightId}
+	@RequestMapping(path="deleteFlight/{flightId}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody int deleteFlight(@PathVariable("flightId") long flightId){
+		return service.deleteFlight(flightId);
 	}
 	
 	@ExceptionHandler(Exception.class)

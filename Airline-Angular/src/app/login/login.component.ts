@@ -38,6 +38,13 @@ export class LoginComponent implements OnInit {
       this.result = this.userId
       
       if(this.result!=0){
+        if(this.result == 57){
+          localStorage.setItem("userId",this.result);
+          alert('Login Successful');
+          this.parent.ngOnInit();
+          this.router.navigate(['addflights'])
+        }
+        else{
             localStorage.setItem("userId",this.result);
             this.userService.getUserName(this.result).subscribe(data=>{
               this.result2 = JSON.parse(JSON.stringify(data));
@@ -46,6 +53,7 @@ export class LoginComponent implements OnInit {
               alert('Login Successful');
               localStorage.setItem("userName", this.result2.firstName);
           });
+        }
           
          }
       else{
@@ -53,9 +61,6 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-  
-
   loadRegistrationPage(){
     this.router.navigate(['register']);
   }

@@ -86,7 +86,7 @@ export class BookComponent implements OnInit {
             }else if(this.counter>0){
               this.counter--;
               this.service.selectedSeats.forEach( (item, index) => {
-                if(item === event.target.id) this.service.selectedSeats.splice(index,1);
+                if(item === event.target.name) this.service.selectedSeats.splice(index,1);
               });
               
             }

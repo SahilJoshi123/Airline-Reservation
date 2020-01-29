@@ -29,13 +29,13 @@ export class SearchComponent implements OnInit {
     });
   }
   
-  Location: string[] = ['--Select--','Mumbai', 'Bangalore', 'Delhi','Hyderabad'];
+  Location: string[] = ['--Select--','Mumbai', 'Bengaluru', 'Delhi','Hyderabad'];
 
   Travellers:number[]=[0,1,2,3,4,5,6,7,8,9];
   Class: string[]=['--Select--','Economy','Business'];
   
   
-  loadFlightDetails(data){
+  loadFlightDetails(){
   
      let date = new Date(this.addForm.controls.departureDate.value);
      let dateArray: string[] = date.toString().split(" ");
@@ -43,28 +43,26 @@ export class SearchComponent implements OnInit {
 
      this.flightSearchDetails = {
       "source":this.addForm.controls.source.value,
-       "destination":this.addForm.controls.destination.value,
-       "destinationDate":formattedDate,
-       "seats": this.addForm.controls.count.value
+      "destination":this.addForm.controls.destination.value,
+      "destinationDate":formattedDate,
+      "seats": this.addForm.controls.count.value
      };
-    
-    // this.flightSearchDetails = {
-    //   "source":"Mumbai",
-    //   "destination":"Delhi",
-    //   "destinationDate":"03-Feb-20",
-    //   "seats": "1"
-    // };
-    this.service.fetchFlights(this.flightSearchDetails).subscribe(result =>{
+   
+     this.service.fetchFlights(this.flightSearchDetails).subscribe(result =>{
       this.data = result;
       this.flightData = this.data;
     });
   }
+
+
 
   loadBookingPage(data){
     if(+localStorage.getItem("userId")>0){
     data.departureDate = data.departureDate.split(' ')[0];
     let ticketDetails ={ "passengerId":0,
                           "flightId":0,
+                          "source":"",
+                          "destination":"",
                           "departureDate": "",
                           "departureTime": "",
                           "airportName": "",

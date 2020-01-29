@@ -20,7 +20,10 @@ public interface AirlineService {
 	public int getPaymentConfirmation(PaymentDetails details);
 	public int bookTicket(Tickets details);
 	public void bookSeats(SeatInfo seatDetails);
-	public Tickets getTicket(long userId);
+	public List<Tickets> getTicket(long userId);
 	public Passengers getUser(long userId);
 	public int addFlightDetails(FlightDetails details);
+	public int deleteFlight(long flightId);
+	public List<String> getUserBookedSeats(long flightId, long userId);
+	public int cancelTicket(long ticketNumber);
 }

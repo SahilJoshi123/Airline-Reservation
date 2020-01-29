@@ -3,13 +3,12 @@ package com.airline.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +36,28 @@ public class Tickets {
 	@PrimaryKeyJoinColumn(name="flight_id", referencedColumnName="flight_id")
 	private Flights flight;
 	
+	@Column(name="source")
+	private String source;
+	
+	@Column(name="destination")
+	private String destination;
+	
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
 	@Column(name="departure_date")
 	private String departureDate;
 	

@@ -52,7 +52,7 @@ public class AirlineServiceImpl implements AirlineService {
 		dao.bookSeats(seatDetails);
 	}
 
-	public Tickets getTicket(long userId) {
+	public List<Tickets> getTicket(long userId) {
 		return dao.fetchTicket(userId);		
 	}
 
@@ -62,5 +62,17 @@ public class AirlineServiceImpl implements AirlineService {
 
 	public int addFlightDetails(FlightDetails details) {
 		return dao.addFlights(details);
+	}
+
+	public int deleteFlight(long flightId) {
+		return dao.removeFlight(flightId);
+	}
+
+	public List<String> getUserBookedSeats(long flightId, long userId) {
+		return dao.fetchUserBookedSeats(flightId, userId);
+	}
+
+	public int cancelTicket(long ticketNumber) {
+		return dao.cancelTicket(ticketNumber);
 	}
 }

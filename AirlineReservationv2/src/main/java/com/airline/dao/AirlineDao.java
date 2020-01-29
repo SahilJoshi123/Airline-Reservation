@@ -20,7 +20,10 @@ public interface AirlineDao {
 	public int fetchPaymentConfirmation(PaymentDetails details);
 	public int bookTicket(Tickets details);
 	public void bookSeats(SeatInfo seatDetails);
-	public Tickets fetchTicket(long userId);
+	public List<Tickets> fetchTicket(long userId);
 	public Passengers fetchUser(long userId);
 	public int addFlights(FlightDetails details);
+	public int removeFlight(long flightId);
+	public List<String> fetchUserBookedSeats(long flightId, long userId);
+	public int cancelTicket(long ticketNumber);
 }

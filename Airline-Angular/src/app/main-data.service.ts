@@ -11,6 +11,14 @@ selectedSeats = new Array();
 
   constructor(private http: HttpClient) { }
 
+  addFlight(flightDetails: any){
+    return this.http.post(this.baseUrl+"addFlight", flightDetails)
+  }
+
+  deleteFlight(flightId: number){
+    return this.http.get(this.baseUrl+"deleteFlight/"+flightId)
+  }
+
   fetchFlights(flightSearchDetails: any){
     return this.http.post(this.baseUrl+"search",flightSearchDetails)
   }
@@ -25,6 +33,14 @@ selectedSeats = new Array();
 
   getTicket(passengerId: number){
     return this.http.get(this.baseUrl+"ticket/"+passengerId)
+  }
+
+  getUserSeats(flightId: number, userId: number){
+    return this.http.get(this.baseUrl+"userSeats/"+flightId+"/"+userId)
+  }
+
+  cancelTicket(ticketNumber: number){
+    return this.http.get(this.baseUrl+"cancel/"+ticketNumber)
   }
 
   bookTicket(ticketDetails: any){

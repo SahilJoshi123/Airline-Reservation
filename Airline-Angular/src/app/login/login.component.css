@@ -2,7 +2,6 @@
 {
    display:flex;
    float: left;
-   /* height: 350px; */
    width: 60%;
    padding-left: 3%;
    padding-bottom: 3%;
@@ -22,15 +21,45 @@ img{
   
 }
 
+input[type=text],[type=password] {
+   width: 93%;
+   margin-bottom: 5%;
+   padding: 3%;
+   border: 1px solid #ccc;
+   border-radius: 3px;
+}
+
 .login_container{
    
    float:left;
    margin-top: 7%;
-   width:24%;
+   width:25%;
    border: 1px solid black;
    border-radius: 4%;
    padding-bottom: 3%;
    padding-left: 2%;
-   margin-left: 40%;
+   margin-left: 37%;
    box-shadow: 10px 10px 10px #aaaaaa;
+}
+
+.button1{
+   background-color:rgb(97, 235, 97);
+   padding: 12px;
+   width: 120%;
+   margin-left: 15%;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 17px;
+   border-radius: 10px;
+}
+
+.button2{
+   background-color: rgb(99, 160, 211);
+   padding: 12px;
+   margin-left: 30%;
+   width: 42%;
+   border-radius: 3px;
+   cursor: pointer;
+   font-size: 17px;
+   border-radius: 10px;
 }

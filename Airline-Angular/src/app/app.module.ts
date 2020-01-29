@@ -15,7 +15,6 @@ import { AddFlightsComponent } from './add-flights/add-flights.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
 import { TicketinformationComponent } from './ticketinformation/ticketinformation.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 
@@ -29,7 +28,6 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
     RegisterComponent,
     LoginComponent,
     AddFlightsComponent,
-    DeleteFlightComponent,
     TicketinformationComponent,
     UserprofileComponent
    

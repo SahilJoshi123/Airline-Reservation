@@ -88,6 +88,7 @@ public class AirlineDaoImpl implements AirlineDao{
 						+ "AND destination = :destination "
 						+ "AND departureDate = :departureDate "
 						+ "AND availableSeats > :seats";
+		
 		TypedQuery<Flights> query = entityManager.createQuery(jpql, Flights.class);
 		query.setParameter("source", details.getSource());
 		query.setParameter("destination", details.getDestination());
@@ -135,11 +136,15 @@ public class AirlineDaoImpl implements AirlineDao{
 
 	@Transactional
 	public int bookTicket(Tickets details) {
-		String sql = "INSERT INTO Tickets(Ticket_Number, Passenger_Id, Flight_Id, Departure_Date, Departure_Time, Airport_Name, Class, Number_Of_Tickets, Total_Cost, Status) "
-				+ "VALUES(ticket_number_seq.NEXTVAL, :passengerId, :flightId, :departureDate, :departureTime, :airportName, :travelClass, :numberOfTickets, :totalCost, :status)";
+		System.out.println(details.getSource());
+		
+		String sql = "INSERT INTO Tickets(Ticket_Number, Passenger_Id, Flight_Id, Source, Destination, Departure_Date, Departure_Time, Airport_Name, Class, Number_Of_Tickets, Total_Cost, Status) "
+				+ "VALUES(ticket_number_seq.NEXTVAL, :passengerId, :flightId, :source, :destination, :departureDate, :departureTime, :airportName, :travelClass, :numberOfTickets, :totalCost, :status)";
 		Query query = entityManager.createNativeQuery(sql);
 		query.setParameter("passengerId", details.getPassengerId());
 		query.setParameter("flightId", details.getFlightId());
+		query.setParameter("source", details.getSource());
+		query.setParameter("destination", details.getDestination());
 		query.setParameter("departureDate", details.getdepartureDate());
 		query.setParameter("departureTime", details.getDepartureTime());
 		query.setParameter("airportName", details.getAirportName());
@@ -172,12 +177,6 @@ public class AirlineDaoImpl implements AirlineDao{
 		}
 	}
 
-	public Tickets fetchTicket(long userId) {
-		String jpql = "SELECT t FROM Tickets t WHERE t.passengerId = :userId";
-		TypedQuery<Tickets> query = entityManager.createQuery(jpql, Tickets.class);
-		query.setParameter("userId", userId);
-		return query.getSingleResult();
-	}
 
 	public Passengers fetchUser(long userId) {
 		String jpql = "FROM Passengers WHERE passengerId = :userId";
@@ -205,4 +204,68 @@ public class AirlineDaoImpl implements AirlineDao{
 		return query.executeUpdate();
 		
 	}
+
+	@Transactional
+	public int removeFlight(long flightId) {
+		String jpql = "DELETE FROM Flights WHERE flightId = :flightId";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("flightId", flightId);
+		return query.executeUpdate();
+	}
+	
+
+	public List<Tickets> fetchTicket(long userId) {
+		String jpql = "SELECT t FROM Tickets t WHERE t.passengerId = :userId AND status = 'Booked'";
+		TypedQuery<Tickets> query = entityManager.createQuery(jpql, Tickets.class);
+		query.setParameter("userId", userId);
+		return query.getResultList();
+	}
+
+	public List<String> fetchUserBookedSeats(long flightId, long userId) {
+		String jpql = "SELECT s FROM Seats s WHERE flightId = :flightId AND passengerId = :userId";
+		TypedQuery<Seats> query = entityManager.createQuery(jpql, Seats.class);
+		query.setParameter("flightId", flightId);
+		query.setParameter("userId", userId);
+		List<String> seatList = new ArrayList<String>();
+		List<Seats> list = query.getResultList();
+		
+		for (Seats seats : list) {
+			seatList.add(seats.getSeatId());
+		}		
+		
+		return seatList;
+	}
+
+	@Transactional
+	public int cancelTicket(long ticketNumber) {
+		TypedQuery<Tickets> query = entityManager.createQuery("FROM Tickets WHERE ticketNumber = :ticketNumber", Tickets.class);
+		query.setParameter("ticketNumber", ticketNumber);
+		Tickets ticket = query.getSingleResult();
+		ticket.setStatus("Cancelled");
+		entityManager.merge(ticket);
+		
+		String clearSeats = "DELETE FROM Seats WHERE flightId = :flightId AND passengerId = :userId";
+		Query query2 = entityManager.createQuery(clearSeats);
+		query2.setParameter("flightId", ticket.getFlightId());
+		query2.setParameter("userId", ticket.getPassengerId());
+		query2.executeUpdate();
+		
+		
+		String getAvailableSeatsJpql = "From Flights WHERE flightId = :flightId";
+		TypedQuery<Flights> getFlight = entityManager.createQuery(getAvailableSeatsJpql, Flights.class);
+		getFlight.setParameter("flightId", ticket.getFlightId());
+		
+		int availableSeats = getFlight.getSingleResult().getAvailableSeats()+ticket.getNumberOfTickets();
+		
+		String updateAvailableSeatsJpql = "UPDATE Flights SET availableSeats = :availableSeats WHERE flightId = :flightId";
+		
+		Query query3 = entityManager.createQuery(updateAvailableSeatsJpql);
+		query3.setParameter("availableSeats", availableSeats);
+		query3.setParameter("flightId", ticket.getFlightId());
+		query3.executeUpdate();
+		
+		
+		return 1;
+	}
+
 }

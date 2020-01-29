@@ -46,12 +46,13 @@
                 <tr>
                     <td>
                         <div>
-                            <input type="submit" value="Add Flight" (click)="nextPage()" class="button"></div></td>
+                            <input type="submit" value="Add Flight" (click)="addFlight()" class="button"></div></td>
                 </tr>
             
             </table>
         </div>
-
+    </form>
+    <form [formGroup]="deleteFlight" (ngSubmit)="deleteFlightById()">
         <div class="rightDiv"> 
             <h1 style="color: indigo; margin-left: 17%;">Delete Flight</h1> 
           <table>
@@ -64,10 +65,11 @@
             <tr>
                 <td>
                     <div>
-                        <input type="button" value="Delete Flight" (click)="deleteFlight()" class="button"></div></td>
+                        <input type="submit" value="Delete Flight" class="button"></div></td>
             </tr>
 
           </table>
            
         </div>
     </form>
+    

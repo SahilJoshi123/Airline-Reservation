@@ -1,4 +1,4 @@
-input[type=text] {
+input[type=text],[type=password] {
     width: 93%;
     margin-bottom: 5%;
     padding: 3%;
